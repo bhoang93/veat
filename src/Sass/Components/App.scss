@@ -1,0 +1,12 @@
+.App {
+  max-width: 150rem;
+  margin: 3rem auto;
+  background-color: var(--color-white);
+  box-shadow: var(--dark-shadow);
+
+  min-height: 70rem;
+}
+
+.content {
+  display: flex;
+}

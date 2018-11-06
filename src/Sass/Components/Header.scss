@@ -1,0 +1,129 @@
+.header {
+  margin-top: 0.4rem;
+  height: 10rem;
+  background-color: var(--light-color3);
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text-container {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__main-title {
+    font-size: 4rem;
+    &--v {
+      color: var(--light-color5);
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--small-font-size);
+    background-color: var(--light-color5);
+    padding: 0.5rem 1rem;
+    border-radius: 4rem;
+  }
+}
+
+.search {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__input {
+    font-family: inherit;
+    font-size: var(--small-font-size);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 10rem;
+    width: 90%;
+    transition: all 0.2s ease;
+    margin-right: -3.5rem;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-white-dark);
+    }
+  }
+
+  &__input:focus + &__button {
+    background-color: var(--color-white-dark);
+  }
+
+  &__button {
+    border: none;
+    background-color: var(--color-white);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+
+  & > * {
+    padding: 0 1.3rem;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > *:hover {
+    background-color: var(--light-color4);
+  }
+
+  &__icon-box {
+    position: relative;
+  }
+
+  &__notification {
+    font-size: 0.8rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-color5);
+    color: var(--color-white);
+    position: absolute;
+    bottom: 50%;
+    right: 60%;
+  }
+
+  &__user {
+    display: flex;
+  }
+
+  &__user-photo {
+    height: 5rem;
+    width: 5rem;
+    clip-path: circle(50%);
+  }
+
+  &__username {
+    margin-left: 0.6rem;
+    font-size: var(--small-font-size);
+  }
+}

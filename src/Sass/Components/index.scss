@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Nunito", sans-serif;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--light-color4),
+    var(--light-color5)
+  );
+  color: var(--color-black);
+}
