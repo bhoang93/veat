@@ -13,27 +13,14 @@ const Header = () => {
         </h1>
         <h2 className="header__subtitle">Vegan Made Easy</h2>
       </div>
-
-      <form action="#" className="search">
-        <input type="text" class="search__input" placeholder="Search recipes" />
-        <button className="search__button">
-          <Icon styleType="search" hw="20" icon={ICONS.SEARCH} />
-        </button>
-      </form>
-
       <nav className="user-nav">
         <div className="user-nav__icon-box">
-          <Icon hw="30" icon={ICONS.LEARN} />
-          <span styleType="nav" className="user-nav__notification">
-            1
-          </span>
+          <Icon hw="20" icon={ICONS.BUBBLE} />
+          <span className="user-nav__notification">1</span>
         </div>
 
         <div className="user-nav__icon-box">
-          <Icon hw="30" icon={ICONS.BUBBLE} />
-          <span styleType="nav" className="user-nav__notification">
-            1
-          </span>
+          <Icon hw="20" icon={ICONS.SETTINGS} />
         </div>
 
         <div className="user-nav__user">

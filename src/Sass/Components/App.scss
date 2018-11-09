@@ -1,12 +1,20 @@
 .App {
-  max-width: 150rem;
+  max-width: 120rem;
   margin: 3rem auto;
   background-color: var(--color-white);
   box-shadow: var(--dark-shadow);
 
-  min-height: 70rem;
+  @include mediaQuery($bp-largest) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .content {
   display: flex;
+
+  @include mediaQuery($bp-med) {
+    flex-direction: column;
+  }
 }
