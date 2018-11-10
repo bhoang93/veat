@@ -28,9 +28,28 @@
   z-index: 0;
   padding-bottom: 1.5rem;
   transition: all 0.3s ease;
+  animation: scaleIn 1s ease;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  &__load {
+    font-size: var(--default-font-size);
+    margin: 1rem;
+    text-align: center;
+    border-bottom: 3px solid var(--highlight-color);
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
+
+    &:active {
+      transform: translateY(0.5rem);
+    }
   }
 
   &__header {
