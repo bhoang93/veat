@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      isLoading: false,
       recipes: [],
       recipePage: 2
     };
@@ -44,23 +45,39 @@ class App extends Component {
   };
 
   loadMoreRecipes = () => {
-    fetch(
-      `https://www.food2fork.com/api/search?key=7f0486a5c4cf004b8b52646b5c9590e8&q=vegan&page=${
-        this.state.recipePage
-      }`
-    )
-      .then(resp => resp.json())
-      .then(
-        data => (this.fullRecipeList = this.fullRecipeList.concat(data.recipes))
-      )
-      .then(() =>
-        this.setState(prevState => {
-          return {
-            recipes: this.fullRecipeList,
-            recipePage: prevState.recipePage + 1
-          };
-        })
-      );
+    this.setState(
+      prevState => {
+        return { isLoading: !prevState.isLoading };
+      },
+      () =>
+        fetch(
+          `https://www.food2fork.com/api/search?key=7f0486a5c4cf004b8b52646b5c9590e8&q=vegan&page=${
+            this.state.recipePage
+          }`
+        )
+          .then(resp => resp.json())
+          .then(
+            data =>
+              (this.fullRecipeList = this.fullRecipeList.concat(data.recipes))
+          )
+          .then(() =>
+            this.setState(prevState => {
+              return {
+                recipes: this.fullRecipeList,
+                recipePage: prevState.recipePage + 1,
+                isLoading: !prevState.isLoading
+              };
+            })
+          )
+    );
+  };
+
+  scrollToTop = () => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  };
+
+  scrollToBottom = () => {
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   render() {
@@ -75,9 +92,12 @@ class App extends Component {
               path="/recipes"
               render={() => (
                 <Recipes
+                  isLoading={this.state.isLoading}
                   recipes={this.state.recipes}
                   onSearch={this.onSearch}
                   loadMoreRecipes={this.loadMoreRecipes}
+                  scrollToTop={this.scrollToTop}
+                  scrollToBottom={this.scrollToBottom}
                 />
               )}
             />

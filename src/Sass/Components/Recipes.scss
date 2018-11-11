@@ -1,6 +1,8 @@
 .recipes-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -9,6 +11,30 @@
   font-size: 3rem;
   color: var(--light-color5);
   text-align: center;
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 8rem;
+  right: 2rem;
+}
+
+.scrollToBottom {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.scroll:hover {
+  cursor: pointer;
+}
+
+.loading-spinner {
+  height: 10rem;
+  width: auto;
+  margin: 2rem;
+  display: inline-block;
+  animation: rotate 2s infinite;
 }
 
 .recipe {
@@ -105,13 +131,14 @@
 
     &:hover {
       background-color: var(--light-color3);
-      border-radius: 0px;
+      transform: translateY(-0.5rem);
     }
   }
 }
 
 .search {
-  flex: 0 0 40%;
+  width: 40vw;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
