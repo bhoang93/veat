@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from "./Components/Header";
 import Navigation from "./Components/Navigation";
@@ -16,7 +16,9 @@ class App extends Component {
     this.state = {
       isLoading: false,
       recipes: [],
-      recipePage: 2
+      recipePage: 2,
+      loadedRest: false,
+      restList: []
     };
   }
 
@@ -72,19 +74,55 @@ class App extends Component {
     );
   };
 
-  scrollToTop = () => {
-    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  loadRest = () => {
+    this.setState(
+      prevState => {
+        return { isLoading: !prevState.isLoading };
+      },
+      () => {
+        const setPosition = position => {
+          let lat = position.coords.latitude;
+          let long = position.coords.longitude;
+
+          fetch(
+            `https://www.vegguide.org/search/by-lat-long/${lat},${long}/filter/veg_level=5"`,
+            {
+              headers: {
+                "User-Agent": "veat"
+              }
+            }
+          )
+            .then(resp => resp.json())
+            .then(data =>
+              this.setState(prevState => {
+                return {
+                  restList: data.entries,
+                  loadedRest: !prevState.loadRest,
+                  isLoading: !prevState.isLoading
+                };
+              })
+            );
+        };
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(setPosition);
+        }
+      }
+    );
   };
 
-  scrollToBottom = () => {
-    window.scrollTo(0, document.body.scrollHeight);
+  resetRest = () => {
+    this.setState({
+      loadedRest: false,
+      restList: []
+    });
   };
 
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <div className="App">
-          <Header />
+      <div className="App">
+        <Header />
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <div className="content">
             <Navigation />
             <Route exact path="/" component={View} />
@@ -96,17 +134,26 @@ class App extends Component {
                   recipes={this.state.recipes}
                   onSearch={this.onSearch}
                   loadMoreRecipes={this.loadMoreRecipes}
-                  scrollToTop={this.scrollToTop}
-                  scrollToBottom={this.scrollToBottom}
                 />
               )}
             />
-            <Route path="/restfinder" component={RestFinder} />
+            <Route
+              path="/restfinder"
+              render={() => (
+                <RestFinder
+                  loadedRest={this.state.loadedRest}
+                  isLoading={this.state.isLoading}
+                  loadRest={this.loadRest}
+                  restList={this.state.restList}
+                  resetRest={this.resetRest}
+                />
+              )}
+            />
             <Route path="/learn" component={Learn} />
             <Route path="/favourites" component={Favourites} />
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     );
   }
 }

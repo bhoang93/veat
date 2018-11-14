@@ -1,0 +1,30 @@
+.rest-finder-container {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title {
+  margin-top: 1rem;
+  font-size: 3rem;
+  color: var(--light-color5);
+  text-align: center;
+}
+
+.find-rest-button {
+  align-self: center;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--light-color3);
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}

@@ -1,3 +1,11 @@
+.main-container {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .recipes-container {
   display: flex;
   flex-wrap: wrap;
@@ -11,18 +19,6 @@
   font-size: 3rem;
   color: var(--light-color5);
   text-align: center;
-}
-
-.scrollToTop {
-  position: fixed;
-  bottom: 8rem;
-  right: 2rem;
-}
-
-.scrollToBottom {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
 }
 
 .scroll:hover {
@@ -58,24 +54,6 @@
 
   &:hover {
     transform: scale(1.05);
-  }
-
-  &__load {
-    font-size: var(--default-font-size);
-    margin: 1rem;
-    text-align: center;
-    border-bottom: 3px solid var(--highlight-color);
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translateY(-0.5rem);
-    }
-
-    &:active {
-      transform: translateY(0.5rem);
-    }
   }
 
   &__header {

@@ -18,3 +18,22 @@
     flex-direction: column;
   }
 }
+
+.change-page {
+  font-size: var(--default-font-size);
+  margin: 1rem;
+  text-align: center;
+  border-bottom: 3px solid var(--highlight-color);
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-end;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+  }
+
+  &:active {
+    transform: translateY(0.5rem);
+  }
+}

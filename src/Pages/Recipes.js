@@ -1,18 +1,9 @@
 import React from "react";
-import { ICONS } from "../Images/SVG/SvgConstants";
-import Icon from "../Images/SVG/Icon";
-import spinner from "../Images/SVG/spinner10.svg";
-
+import Loading from "../Components/Loading";
+import PageControls from "../Components/PageControls";
 import SearchBox from "../Components/SearchBox";
 
-const Recipes = ({
-  isLoading,
-  recipes,
-  onSearch,
-  loadMoreRecipes,
-  scrollToTop,
-  scrollToBottom
-}) => {
+const Recipes = ({ isLoading, recipes, onSearch, loadMoreRecipes }) => {
   return (
     <div className="main-container">
       <h1 className="recipe-main-title">Vegan Recipes</h1>
@@ -43,28 +34,17 @@ const Recipes = ({
             );
           })}
           {!isLoading ? (
-            <div className="recipe__load" onClick={loadMoreRecipes}>
+            <div className="change-page" onClick={loadMoreRecipes}>
               Load More &darr;
             </div>
           ) : (
-            <img
-              src={spinner}
-              className="loading-spinner"
-              alt="loading spinner"
-            />
+            <Loading />
           )}
         </div>
       ) : (
-        <img src={spinner} className="loading-spinner" alt="loading spinner" />
+        <Loading />
       )}
-      <aside>
-        <div className="scroll scrollToTop" onClick={scrollToTop}>
-          <Icon icon={ICONS.UPARROW} hw={50} />
-        </div>
-        <div className="scroll scrollToBottom" onClick={scrollToBottom}>
-          <Icon icon={ICONS.DOWNARROW} hw={50} />
-        </div>
-      </aside>
+      <PageControls />
     </div>
   );
 };

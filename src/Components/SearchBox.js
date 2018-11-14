@@ -1,5 +1,4 @@
 import React from "react";
-import Icon from "../Images/SVG/Icon";
 
 const SearchBox = ({ onSearch }) => {
   return (

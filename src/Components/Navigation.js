@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../Images/SVG/Icon";
 import { ICONS } from "../Images/SVG/SvgConstants";
-import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const pages = [
   { name: "Home", icon: ICONS.HOME, id: "" },
